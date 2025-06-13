@@ -1,0 +1,328 @@
+/* Enhanced CSS for Memory Allocation Simulator */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    padding: 40px 20px;
+    color: #2d3436;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h1, h2 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+h1:after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 3px;
+    background: linear-gradient(90deg, #3498db, #9b59b6);
+    border-radius: 2px;
+}
+
+h2 {
+    font-size: 1.8rem;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    color: #34495e;
+}
+
+.controls {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    margin-bottom: 40px;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+label {
+    color: #34495e;
+    font-weight: 600;
+    min-width: 150px;
+    font-size: 0.95rem;
+}
+
+input, select {
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    width: 120px;
+    font-size: 0.9rem;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+.partition-sizes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 15px;
+    align-items: center;
+}
+
+.partition-sizes input {
+    width: 90px;
+}
+
+button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: translateY(0) !important;
+    box-shadow: none;
+}
+
+button:hover:not(:disabled) {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 14px rgba(0,0,0,0.15);
+}
+
+button:active:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+}
+
+.allocate-btn { 
+    background: linear-gradient(to right, #2ecc71, #27ae60); 
+}
+
+.deallocate-btn { 
+    background: linear-gradient(to right, #e74c3c, #c0392b); 
+}
+
+.reset-btn { 
+    background: linear-gradient(to right, #3498db, #2980b9); 
+}
+
+.update-btn { 
+    background: linear-gradient(to right, #9b59b6, #8e44ad); 
+}
+
+.update-all-btn { 
+    background: linear-gradient(to right, #e67e22, #d35400); 
+}
+
+.mode-btn { 
+    background: linear-gradient(to right, #f1c40f, #f39c12); 
+}
+
+.memory-display {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 25px;
+    padding: 35px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    margin-bottom: 40px;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.fit-section {
+    margin-bottom: 60px;
+}
+
+.partition-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.partition {
+    height: 180px;
+    width: 100%;
+    background: #f8f9fa;
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid #dfe6e9;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.partition:hover {
+    transform: scale(1.05);
+    border-color: #74b9ff;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.partition-info {
+    font-size: 0.9rem;
+    color: #2d3436;
+    text-align: center;
+    font-weight: 500;
+    background: rgba(236, 240, 241, 0.7);
+    padding: 8px 12px;
+    border-radius: 8px;
+    width: 100%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.memory-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.process {
+    width: 100%;
+    background: linear-gradient(135deg, #2ecc71, #1abc9c);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    transition: height 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    font-size: 0.85rem;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+    box-shadow: 0 -1px 3px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.process:nth-child(2n) {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+}
+
+.process:nth-child(3n) {
+    background: linear-gradient(135deg, #9b59b6, #8e44ad);
+}
+
+.process:nth-child(4n) {
+    background: linear-gradient(135deg, #e67e22, #d35400);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#log {
+    margin-top: 40px;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    max-height: 250px;
+    overflow-y: auto;
+    font-size: 0.9rem;
+    color: #2c3e50;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.log-entry {
+    margin: 8px 0;
+    padding: 8px 12px;
+    border-radius: 6px;
+    animation: fadeIn 0.4s ease;
+    background: rgba(236, 240, 241, 0.5);
+    border-left: 3px solid #3498db;
+}
+
+.log-entry:first-child {
+    background: rgba(46, 204, 113, 0.1);
+    border-left: 3px solid #2ecc71;
+    font-weight: 500;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+    .input-group {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    label {
+        margin-bottom: 5px;
+    }
+    
+    input, select {
+        width: 100%;
+    }
+    
+    .partition-sizes {
+        width: 100%;
+    }
+    
+    button {
+        width: 100%;
+        margin-top: 10px;
+    }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #bdc3c7;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #95a5a6;
+}

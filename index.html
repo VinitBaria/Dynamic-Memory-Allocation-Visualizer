@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Allocation Simulator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Memory Allocation Simulator</h1>
+        
+        <div class="controls">
+            <div class="input-group">
+                <label>Number of Partitions:</label>
+                <input type="number" id="numPartitions" min="1" value="5">
+                <button class="update-btn" onclick="updatePartitionInputs()">Update Partitions</button>
+            </div>
+            <div class="input-group">
+                <div id="partitionSizes" class="partition-sizes"></div>
+                <button class="update-all-btn" onclick="updateAllPartitions()">Update All Sizes</button>
+            </div>
+            <div class="input-group">
+                <label>Process Size (KB):</label>
+                <input type="number" id="processSize" min="1" value="50">
+                <label>Algorithm:</label>
+                <select id="algorithm">
+                    <option value="first">First Fit</option>
+                    <option value="next">Next Fit</option>
+                    <option value="best">Best Fit</option>
+                    <option value="worst">Worst Fit</option>
+                </select>
+                <button class="allocate-btn" id="mainAllocateBtn" onclick="allocateMemory()">Allocate</button>
+                <button class="deallocate-btn" id="deallocateBtn" onclick="deallocateMemory()">Deallocate</button>
+                <button class="reset-btn" onclick="resetSimulation()">Reset</button>
+                <button class="mode-btn" id="modeBtn" onclick="toggleMode()">All Fits</button>
+            </div>
+        </div>
+
+        <div id="memoryDisplay" class="memory-display"></div>
+        <div id="allFitsDisplay"></div>
+        <div id="log"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
